@@ -2,18 +2,39 @@
   "name": "campfire",
   "version": "2.0.0",
   "description": "An application that lets you watch youtube videos with your friends in sync.",
-  "main": "index.js",
+  "author": "Nazmican Çalık",
   "scripts": {
+    "backend": "cd backend && npm start",
     "backend-install": "cd backend && npm install",
+    "frontend": "cd frontend && npm start",
     "frontend-install": "cd frontend && npm install",
     "install": "npm run backend-install && npm run frontend-install",
-    "frontend": "cd frontend && npm start",
-    "backend": "cd backend && npm start",
     "start": "concurrently \"npm run backend\" \"npm run frontend\""
   },
-  "author": "Nazmican Çalık",
-  "license": "ISC",
+  "main": "index.js",
   "dependencies": {
-    "concurrently": "^5.0.0"
+    "@quasar/extras": "^1.0.0",
+    "concurrently": "^5.0.0",
+    "quasar": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-imports": "1.5.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "vue-cli-plugin-quasar": "~2.0.2"
+  },
+  "license": "ISC",
+  "babel": {
+    "plugins": [
+      [
+        "transform-imports",
+        {
+          "quasar": {
+            "transform": "quasar/dist/babel-transforms/imports.js",
+            "preventFullImport": true
+          }
+        }
+      ]
+    ]
   }
 }
